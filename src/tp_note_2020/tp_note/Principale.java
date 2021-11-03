@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tp_note;
+package tp_note_2020.tp_note;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,7 +22,8 @@ import javax.swing.JPanel;
 public class Principale {
 
 	public static void main(String[] args) {
-		
+		ModelCommande mc = new ModelCommande();
+
 		String [] ingredients={"Fromage","Champignons","Chorizo","Oeuf","Oignons","Olives noires","Olives vertes","Roquette"};
 		String[] fidelite= {"Nouveau client", "Cliente avec carte", "Client adhérent"};
 		JButton[] bIngr;
@@ -63,7 +64,9 @@ public class Principale {
 		JLabel commtxt= new JLabel("<html><h3>Aucune commande en cours</h3></html>");
 		commtxt.setPreferredSize(new Dimension(935,200));
 		psud.add(commtxt,BorderLayout.CENTER);
-		psud.add(new JLabel("<html><h3>Pas de commande en cours</h3></html>",JLabel.CENTER), BorderLayout.SOUTH);
+		VuePrix vuePrix = new VuePrix("<html><h3>Pas de commande en cours</h3></html>",JLabel.CENTER);
+		psud.add(vuePrix, BorderLayout.SOUTH);
+		mc.enregistrerObservateur(vuePrix);
 		
 		/*************************************
 		 * Construction de l'IG dans une JFrame
